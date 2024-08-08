@@ -30,13 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
     interestRateError.innerHTML = "";
     radiosError.innerHTML = "";
 
-    // Validate Mortgage Amount
+    // Validate Mortgage Amount3
     if (!mortgageAmountInput.value) {
       mortgageAmountError.innerHTML = "Please enter a mortgage amount";
       mortgageAmountDiv.classList.remove("bg-Slate100", "text-Slate700");
-      mortgageAmountDiv.classList.add("bg-Red", "text-white");
       amountInputDiv.classList.remove("border-Slate700");
-      amountInputDiv.classList.add("border-Red");
+      amountInputDiv.style.borderColor ="hsl(4, 69%, 50%)";
+      mortgageAmountDiv.style.backgroundColor = "hsl(4, 69%, 50%)"; // Equivalent to bg-red-500
+      mortgageAmountDiv.style.color = "#ffffff"; // Equivalent to text-white
       isValid = false;
     }
 
@@ -44,9 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!mortgageTermInput.value) {
       mortgageTermError.innerHTML = "Please enter a mortgage term";
       mortgageTermDiv.classList.remove("bg-Slate100", "text-Slate700");
-      mortgageTermDiv.classList.add("bg-Red", "text-white");
+      mortgageTermDiv.style.backgroundColor = "hsl(4, 69%, 50%)";
+      mortgageTermDiv.style.color ='#ffffff'
       termInputDiv.classList.remove("border-Slate700");
-      termInputDiv.classList.add("border-Red");
+      termInputDiv.style.borderColor ="hsl(4, 69%, 50%)";
       isValid = false;
     }
 
@@ -54,9 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!interestRateInput.value) {
       interestRateError.innerHTML = "Please enter an interest rate";
       interestRateDiv.classList.remove("bg-Slate100", "text-Slate700");
-      interestRateDiv.classList.add("bg-Red", "text-white");
+      interestRateDiv.style.backgroundColor = "hsl(4, 69%, 50%)";
+      interestRateDiv.style.color  ='#ffffff';
       interestInputDiv.classList.remove("border-Slate700");
-      interestInputDiv.classList.add("border-Red");
+      interestInputDiv.style.borderColor ="hsl(4, 69%, 50%)";
       isValid = false;
     }
 
