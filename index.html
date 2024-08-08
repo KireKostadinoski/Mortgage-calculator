@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <title>Mortgage Repayment Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="flex flex-col lg:justify-center items-center bg-Slate100 w-full lg:h-screen">
+        <div class="lg:w-[60%] lg:flex lg:flex-row">
+            <div class="w-full px-8 py-8 bg-white space-y-6 lg:rounded-s-2xl">
+                <div class="flex flex-col justify-between space-y-2 lg:flex-row">
+                    <h1 class="font-sans text-Slate900 font-bold text-2xl">Mortgage Calculator</h1>
+                    <p class="font-sans text-Slate500 font-semibold underline cursor-pointer" id="clearAll">Clear All</p>
+                </div>
+                <div class="flex flex-col justify-between space-y-2">
+                    <h1 class="font-sans text-Slate500 font-semibold">Mortgage Amount</h1>
+                    <div class="flex flex-row w-full h-12 border border-Slate700 rounded-md hover:border-2 duration-75"
+                        id="amountInputDiv">
+                        <div id="mortgageAmountDiv"
+                            class="h-full px-5 flex justify-center items-center rounded-l-md bg-Slate100 font-bold text-Slate700">
+                            &#163;</div>
+                        <input type="number" name="mortgageAmount" class="w-full h-full px-5 rounded-r-md"
+                            id="mortgageAmount">
+                    </div>
+                    <p id="mortgageAmountError" class="text-Red text-[12px] font-semibold"></p>
+                </div>
+                <div class="flex flex-col lg:flex-row lg:space-x-4">
+                    <div class="flex flex-col justify-between space-y-2">
+                        <h1 class="font-sans text-Slate500 font-semibold">Mortgage Term</h1>
+                        <div class="flex flex-row-reverse w-full h-12 border border-Slate700 rounded-md hover:border-2 duration-75"
+                            id="termInputDiv">
+                            <div id="mortgageTermDiv"
+                                class="h-full px-5 flex justify-center items-center rounded-r-md bg-Slate100 font-bold text-Slate700">
+                                years</div>
+                            <input type="number" name="mortgageTerm" class="w-full h-full px-5 rounded-l-md"
+                                id="mortgageTerm">
+                        </div>
+                        <p id="mortgageTermError" class="text-Red text-[12px] font-semibold"></p>
+                    </div>
+                    <div class="flex flex-col justify-between space-y-2">
+                        <h1 class="font-sans text-Slate500 font-semibold">Interest Rate</h1>
+                        <div class="flex flex-row-reverse w-full h-12 border border-Slate700 rounded-md hover:border-2 duration-75"
+                            id="interestInputDiv">
+                            <div id="interestRateDiv"
+                                class="h-full px-5 flex justify-center items-center rounded-r-md bg-Slate100 font-bold text-Slate700">
+                                %</div>
+                            <input type="number" name="interestRate" class="w-full h-full px-5 rounded-l-md"
+                                id="interestRate">
+                        </div>
+                        <p id="interestRateError" class="text-Red text-[12px] font-semibold"></p>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-start items-start space-y-2">
+                    <h1 class="font-sans text-Slate500 font-semibold">Mortgage Type</h1>
+                    <div class="flex flex-col w-full space-y-2">
+                        <label
+                            class="flex items-center w-full h-12 border-2 border-Slate300 rounded-md ps-5 font-bold text-Slate900 cursor-pointer hover:bg-yellow-200 hover:border-Lime duration-100">
+                            <input type="radio" name="mortgageType" value="repayment" class="mr-4 w-5 h-5"
+                                id="repayment">
+                            Repayment
+                        </label>
+                        <label
+                            class="flex items-center w-full h-12 border-2 border-Slate300 rounded-md ps-5 font-bold text-Slate900 cursor-pointer hover:bg-yellow-200 hover:border-Lime duration-100">
+                            <input type="radio" name="mortgageType" value="interestOnly" class="mr-4 w-5 h-5"
+                                id="interestOnly">
+                            Interest Only
+                        </label>
+                        <p class="text-Red text-[12px] font-semibold" id="radiosError"></p>
+                    </div>
+                </div>
+                <div class="flex flex-row justify-center items-center w-full h-12 rounded-full bg-Lime hover:bg-yellow-200 duration-100 space-x-2 cursor-pointer"
+                    id="calculateMortgage">
+                    <img src="assets/images/icon-calculator.svg" alt="">
+                    <h1 class="font-bold text-Slate900">Calculate Repayments</h1>
+                </div>
+            </div>
+            <div class="w-full bg-white ">
+                <div
+                    class="w-full h-full bg-Slate900 p-10 flex flex-col justify-center space-y-4 lg:rounded-r-2xl lg:rounded-bl-custom-bl">
+                    <div class="flex flex-col justify-center items-center space-y-4" id="noResultsDiv">
+                        <img src="assets/images/illustration-empty.svg" alt="">
+                        <h1 class="text-white font-bold text-xl">Results Shown Here</h1>
+                        <p class="text-Slate300 text-center">Complete form and click "calculate repayments" to see what
+                            your monthly
+                            repayment would be.</p>
+                    </div>
+                    <div class=" flex-col justify-start space-y-8 hidden" id="resultsDiv">
+                        <div class="flex flex-col space-y-4">
+                            <h1 class="text-white font-bold text-2xl">Your results</h1>
+                            <p class="text-Slate300 text-start text-[14px]">Your results are shown below based on the
+                                information you provided. To adjust the results, edit the form and click "calculate
+                                repayments" again.
+                            </p>
+                        </div>
+                        <div class="flex flex-col space-y-4 p-5 w-full bg-slate-900 border-t-4 border-Lime rounded-lg">
+                             <div class="flex flex-col space-y-1 pb-4 border-b-2 border-Slate700">
+                                  <p class="text-Slate300 text-start text-[14px]">Your monthly prepayments</p>
+                                  <h1 class="text-Lime font-bold text-4xl" id="monthlyPayment"><span> &#163;</span> </h1>
+                             </div>
+                             <div class="flex flex-col space-y-1">
+                                <p class="text-Slate300 text-start text-[14px]">Total you'll repay over the term</p>
+                                <h1 class="text-White font-bold text-2xl" id="totalPaymentResult"><span> &#163;</span> </h1>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
